@@ -1,0 +1,21 @@
+<!--Mapa de google maps para visualizar las áreas de cultivo.
+    El componente está funcionando, pero aún no se tiene la clave 
+    proporcionada por Google Maps para poder agregarlo a la landing page.-->
+<google-map 
+    [height]="'50vh'"
+    [zoom]="zoom"
+    [center]="center"
+    [options]="options"
+    >
+    
+    <app-map-controls
+      (zoomIn)="handleZoomIn()"
+      (zoomOut)="handleZoomOut()"
+      (reset)="handleReset()">
+    </app-map-controls>
+
+    <!-- Mostrar spinner mientras carga -->
+    <div *ngIf="isLoading$ | async" class="loading-overlay">
+      <mat-spinner diameter="50"></mat-spinner>
+    </div>
+</google-map>

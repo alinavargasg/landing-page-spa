@@ -1,0 +1,32 @@
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.element-card {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.2s ease;
+  border: 1px solid #e0e0e0;
+  mat-card-title{
+    color: rgb(5, 116, 55);
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  mat-card-subtitle{
+    color: rgb(7, 92, 45);
+    font-size: 0.9rem;
+  }
+  mat-card-content p{
+    font-size: 0.8rem;
+  }
+}
+
+.element-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  
+}
+
+

@@ -1,0 +1,13 @@
+<a mat-button routerLink="/servicios" [matMenuTriggerFor]="beneficios" 
+        (mouseenter)="handleMouseEnter()" 
+        #menuTrigger="matMenuTrigger">
+    Beneficios
+</a>
+<mat-menu #beneficios="matMenu" 
+          (mouseleave)="handleMenuLeave()" 
+          class="hover-menu">                        
+    <button mat-menu-item (mouseenter)="handleItemHover()"><mat-icon>on_device_training</mat-icon><span>Asesoramiento</span></button>
+    <button mat-menu-item (mouseenter)="handleItemHover()"><mat-icon>engineering</mat-icon><span>Soporte Técnico</span></button>
+    <button mat-menu-item (mouseenter)="handleItemHover()"><mat-icon>apps</mat-icon><span>Software a Medida</span></button>
+    <button mat-menu-item (mouseenter)="handleItemHover()"><mat-icon>laptop</mat-icon><span>Equipos Informáticos</span></button>
+</mat-menu>

@@ -1,0 +1,25 @@
+<p>benefits works!</p>
+<div class="card-container">
+  <mat-card *ngFor="let item of beneficios" class="element-card">
+    <mat-card-header>
+      <mat-card-title><mat-icon><img [src]="item.icon" alt="" style="width: 24px; height: 24px;"></mat-icon>{{item.title}}</mat-card-title>
+      <mat-card-subtitle>{{item.subtitle}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="item.imageUrl" alt="Imagen descriptiva">
+    <mat-card-content>
+      <p>{{item.description}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+
+      <button mat-icon-button color="warn" [class.liked]="item.isLiked" 
+                (click)="toggleLike(item.id)">
+          <mat-icon>{{ item.isLiked ? 'favorite' : 'favorite_border' }}</mat-icon>
+        </button>
+        
+        <button mat-icon-button color="primary" (click)="share(item.id)">
+          <mat-icon>share</mat-icon>
+        </button>
+
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -1,0 +1,15 @@
+.map-controls {
+  display: flex;
+  gap: 8px;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+
+  button {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+}

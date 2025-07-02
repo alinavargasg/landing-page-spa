@@ -1,0 +1,42 @@
+<div class="container">
+  <section class="hero" id="hero">
+    <div class="overlay">
+      <h1 class="typewriter">Vida y Tecnología</h1>
+      <h2>Solución agroecológica desarrollada por y para la comunidad</h2>
+      <p><button class="mat-raised-button" (click)="goToSection('testimonials')">
+        ¡Empieza ahora!
+      </button></p>
+    </div>
+  </section>
+
+  <section class="hero-video-section" id="hero-video-section">
+    <div class="video-background">
+      <div class="video-background video-with-fallback">
+        <video 
+          autoplay 
+          muted 
+          loop 
+          playsinline
+          poster="assets/imgs/control-plagas.jpg"
+          class="background-video">
+          <source src="assets/videos/1.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="video-overlay">
+        <h1>Riego Automatizado por Goteo</h1>
+        <p>Reduce el uso innecesario de agua, mejorando la salud del cultivo y optimizando el tiempo y esfuerzo de los agricultores.</p>
+        <hr><hr>
+        <button class="cta-button" (click)="goToSection('footer')">Detalles ...</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section class="testimonials" id="testimonials">  
+  <app-testimonials></app-testimonials>
+</section>
+  
+<!--<section class="ubicaciones">
+  <app-cultivo-map></app-cultivo-map>
+</section>
+-->

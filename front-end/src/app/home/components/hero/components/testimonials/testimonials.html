@@ -1,0 +1,143 @@
+<!-- testimonials.component.html -->
+<section class="testimonials-section">
+  <div class="container">
+    <!-- Título de la sección -->
+    <div class="section-header">
+      <h3 class="section-title">Lo que los Comunarios Opinan sobre el Proyecto</h3>
+      <p class="section-subtitle">
+        Descubre por qué los Agricultores están Interesados en esta Tecnología.
+      </p>
+    </div>
+
+    <!-- Testimonial principal (carousel) -->
+    <div class="main-testimonial">
+      <mat-card class="testimonial-card" 
+                (mouseenter)="stopAutoSlide()" 
+                (mouseleave)="startAutoSlide()">
+        
+        <!-- Controles de navegación -->
+        <div class="navigation-controls">
+          <button mat-icon-button 
+                  (click)="previousTestimonial()" 
+                  class="nav-button prev-button"
+                  aria-label="Testimonio anterior">
+            <mat-icon>chevron_left</mat-icon>
+          </button>
+          
+          <button mat-icon-button 
+                  (click)="nextTestimonial()" 
+                  class="nav-button next-button"
+                  aria-label="Siguiente testimonio">
+            <mat-icon>chevron_right</mat-icon>
+          </button>
+        </div>
+
+        <!--Carrusell de testimonios.-->
+        <mat-card-content class="testimonial-content">
+          <!-- Icono de comillas -->
+          <div class="quote-icon">
+            <mat-icon>format_quote</mat-icon>
+          </div>
+
+          <!-- Mensaje del testimonio -->
+          <p class="testimonial-message">
+            "{{ testimonials[currentTestimonialIndex].message }}"
+          </p>
+
+          <!-- Rating con estrellas -->
+          <div class="rating">
+            <mat-icon *ngFor="let star of getStars(testimonials[currentTestimonialIndex].rating)" 
+                      [class.filled]="star === 1"
+                      class="star">
+              star
+            </mat-icon>
+          </div>
+
+          <!-- Información del involucrado en el proyecto -->
+          <div class="client-info">
+            <img [src]="testimonials[currentTestimonialIndex].avatar" 
+                 [alt]="testimonials[currentTestimonialIndex].name"
+                 class="client-avatar"
+                 mat-card-avatar>
+            
+            <div class="client-details">
+              <h4 class="client-name">
+                {{ testimonials[currentTestimonialIndex].name }}
+              </h4>
+              <p class="client-position">
+                {{ testimonials[currentTestimonialIndex].position }} en 
+                <span class="company">{{ testimonials[currentTestimonialIndex].company }}</span>
+              </p>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <!-- Indicadores de paginación para navegar entre los testimonios -->
+      <div class="pagination-dots">
+        <button *ngFor="let testimonial of testimonials; let i = index"
+                mat-mini-fab
+                [class.active]="i === currentTestimonialIndex"
+                (click)="goToTestimonial(i)"
+                class="dot-button"
+                [attr.aria-label]="'Ver testimonio de ' + testimonial.name">
+        </button>
+      </div>
+    </div>
+
+    <!-- Grid de testimonios secundarios -->
+    <div class="testimonials-grid">
+      <h3 class="grid-title">Más testimonios</h3>
+      
+      <div class="grid-container">
+        <mat-card *ngFor="let testimonial of testimonials.slice(0, 3)" 
+                  class="testimonial-grid-card"
+                  [attr.data-aos]="'fade-up'">
+          
+          <mat-card-header>
+            <img mat-card-avatar 
+                 [src]="testimonial.avatar" 
+                 [alt]="testimonial.name">
+            
+            <mat-card-title>{{ testimonial.name }}</mat-card-title>
+            <mat-card-subtitle>
+              {{ testimonial.position }} - {{ testimonial.company }}
+            </mat-card-subtitle>
+          </mat-card-header>
+
+          <mat-card-content>
+            <div class="mini-rating">
+              <mat-icon *ngFor="let star of getStars(testimonial.rating)" 
+                        [class.filled]="star === 1"
+                        class="mini-star">
+                star
+              </mat-icon>
+            </div>
+            
+            <p class="mini-message">
+              "{{ testimonial.message.substring(0, 120) }}..."
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+
+    <!-- Llamada a la acción -->
+    <div class="testi-section">
+      <h3>¡Únete al futuro de la agricultura sostenible! 🌱💧</h3>
+      <p>Te invitamos a ser parte del Proyecto de Cultivo Inteligente de Lechugas, una iniciativa que combina tecnología y compromiso comunitario para transformar la manera en que cultivamos nuestros alimentos. A través de sistemas de riego automatizado, cuidado inteligente del suelo y control de plagas de forma precisa, estamos haciendo que el trabajo agrícola sea más eficiente, ecológico y accesible.</p>
+      <ul class="sin-viñetas">
+        <li>🔹 Reduce el uso de agua</li>
+        <li>🔹 Mejora el rendimiento de los cultivos</li>
+        <li>🔹 Protege la tierra y el medio ambiente</li>
+        <li>🔹 Aprende e innova con herramientas tecnológicas</li>
+      </ul>
+      <p>Si crees en una agricultura más justa, productiva y conectada, ¡este proyecto es para ti!</p>
+      <h3>¡Opta por la Tecnología!</h3>
+      <button mat-raised-button color="warn" class="testi-button" [routerLink]="['contact']" routerLinkActive="active" (click)="goToTop()">
+        Contáctanos ahora
+        <mat-icon>arrow_forward</mat-icon>
+      </button>
+    </div>
+  </div>
+</section>

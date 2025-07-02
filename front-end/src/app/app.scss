@@ -1,0 +1,14 @@
+body {
+    margin: 0;
+    padding-top: 70px;
+}
+
+/* En el componente principal (app.component.css) */
+:host {
+    display: block;
+    background: transparent !important;
+}
+
+router-outlet + * {
+    background: transparent; /* Contenido transparente */
+}

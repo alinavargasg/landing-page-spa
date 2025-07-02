@@ -1,0 +1,138 @@
+.sidenav-container{
+    position: fixed;
+    top: 0;          /* La coloca en la parte superior */
+    left: 0;
+    width: 100%;
+    z-index: 1000;   /* Asegura que esté por encima de otros elementos */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra opcional */
+}
+
+/* Oculta el botón de menú en desktop */
+.mobile-menu-button {
+    display: none;
+}
+
+/* Oculta la navegación desktop en móvil */
+.no-movil-nav {
+    display: flex;
+}
+
+
+/* Media query para móvil */
+@media (max-width: 768px) {
+    .mobile-menu-button {
+        display: block;
+        mat-nav-list{
+          display: flex;
+        }
+    }
+
+    .sidenav-container {
+        height: 0vh;
+    }
+
+    .main-toolbar {
+        position: fixed;
+        top: 0;
+        z-index: 2; /* Menor que el sidenav (1000) */
+        width: 100%;
+    }
+
+    .mobile-sidenav {
+        width: 250px;
+        height: calc(60vh - 56px); /* Resta la altura del toolbar */
+        top: 56px !important; /* Posición debajo del toolbar */
+        left:0;
+        position: fixed; /* Fija el sidenav */
+        z-index: 1000; /* Asegura que esté por encima del contenido */
+
+    }
+
+      /* Asegura que el contenido no se desborde */
+      mat-sidenav-content {
+          background-size: cover;
+          min-height: 100vh;
+      }    
+      .no-movil-nav {
+            display: none !important; /* Oculta los links en móvil */
+      }
+
+      .logo-img, .title {
+            margin-left: 10px; /* Ajusta el espacio en móvil */
+      }
+
+    }
+
+/*
+Definición de estilos para el logo y el enlace a la pantalla principal "Home"
+*/
+
+.logo-button {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  padding: 8px 16px;
+  border-radius: 28px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  margin-right: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.logo-button:hover::after {
+  opacity: 1;
+}
+
+.logo-button:active {
+  transform: scale(0.98);
+}
+
+.logo-img {
+  height: 36px;
+  margin-right: 12px;
+  transition: transform 0.3s ease;
+}
+
+.logo-button:hover .logo-img {
+  transform: rotate(-5deg);
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  position: relative;
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: currentColor;
+  transition: width 0.3s ease;
+}
+
+.logo-button:hover .title::after {
+  width: 100%;
+}
+
+/* Espaciado para el logo */
+
+.spacer {
+    flex: 1 1 auto;
+}

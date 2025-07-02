@@ -1,0 +1,43 @@
+    <div class="contact-container">
+      <div class="contact-header">
+        <h2>Formulario de Contactos <mat-icon>contact</mat-icon></h2>
+      </div>
+
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class = "contact-form">
+        <!-- Campo Nombre -->
+        <div class="form-group">
+          <label for="nombre">Nombre*</label>
+          <input type="text" id="nombre" formControlName="nombre">
+          <div *ngIf="contactForm.get('nombre')?.invalid && contactForm.get('nombre')?.touched" class="error-message">
+            <div *ngIf="contactForm.get('nombre')?.errors?.['required']">El nombre es requerido</div>
+            <div *ngIf="contactForm.get('nombre')?.errors?.['minlength']">Mínimo 3 caracteres</div>
+          </div>
+        </div>
+
+        <!-- Campo Email -->
+        <div class="form-group">
+          <label for="email">Email*</label>
+          <input type="email" id="email" formControlName="email">
+          <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" class="error-message">
+            <div *ngIf="contactForm.get('email')?.errors?.['required']">El email es requerido</div>
+            <div *ngIf="contactForm.get('email')?.errors?.['email']">Ingresa un email válido</div>
+          </div>
+        </div>
+
+        <!-- Campo Mensaje -->
+        <div class="form-group">
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" formControlName="mensaje" rows="4"></textarea>
+        </div>
+
+        @if (isLoading) {
+          <mat-spinner diameter="30"></mat-spinner>
+        }
+        <div class="form-actions">
+          <!-- Botón de submit -->
+          <button type="submit" [disabled]="isLoading">
+            Enviar
+          </button>
+        </div>
+      </form>
+    </div>
